@@ -4,12 +4,12 @@ import { View, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-nativ
 import { Ionicons } from '@expo/vector-icons'
 
 export function PasswordItem({ data, removePassword}){
-    const [hidePass, setHidePass] = useState(true)
+    const [hidePass, setHidePass] = useState(false)
 
     return(
         <View>
         <Pressable onLongPress={removePassword} style={styles.container}>
-            <Text style={styles.text}>{data}</Text>
+            <Text style={styles.text}>{hidePass ? data : '*'.repeat(data.length)}</Text>
             <TouchableOpacity onPress={() => setHidePass(!hidePass)}>
                 <Ionicons name="eye" color="#FFF" size={25}/>
             </TouchableOpacity>
