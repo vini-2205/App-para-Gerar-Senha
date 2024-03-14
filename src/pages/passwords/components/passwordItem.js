@@ -1,11 +1,20 @@
 import React from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { useState } from 'react'
+import { View, Text, StyleSheet, Pressable, TouchableOpacity } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 
 export function PasswordItem({ data, removePassword}){
+    const [hidePass, setHidePass] = useState(true)
+
     return(
+        <View>
         <Pressable onLongPress={removePassword} style={styles.container}>
-            <Text style={styles.text}>{data}</Text>  
+            <Text style={styles.text}>{data}</Text>
+            <TouchableOpacity onPress={() => setHidePass(!hidePass)}>
+                <Ionicons name="eye" color="#FFF" size={25}/>
+            </TouchableOpacity>
         </Pressable>
+        </View>
     );
 }
 
